@@ -11,6 +11,7 @@ def get_secret_word() -> str:
     with open('secret-words.txt', 'r') as fil:
         words = fil.read().split('\n');
 
+    words.pop();                             # It deletes the last element of the list that it's '\n'
     line = randint(0, len(words) - 1);
     return words[line];
 
