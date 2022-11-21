@@ -1,4 +1,5 @@
 import os
+from random import randint
 
 def push_secret_word(word : str) -> None:
 
@@ -7,7 +8,11 @@ def push_secret_word(word : str) -> None:
 
 def get_secret_word() -> str:
 
-    return 'banana';
+    with open('secret-words.txt', 'r') as fil:
+        words = fil.read().split('\n');
+
+    line = randint(0, len(words) - 1);
+    return words[line];
 
 def update(secret_letters_found : list) -> None:
 
