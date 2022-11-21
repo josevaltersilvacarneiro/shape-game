@@ -1,13 +1,21 @@
+import os
 
 def get_secret_word() -> str:
 
     return 'banana';
 
-def print_header() -> None:
+def update(secret_letters_found : list) -> None:
+
+    os.system('clear');                      # It clean the console
 
     print('******************************');
     print('* Welcome to the Shape Game! *');
     print('******************************');
+
+    for letter in secret_letters_found:
+        print(letter, end='');
+    else:
+        print();
 
 def main() -> int:
 
@@ -19,12 +27,9 @@ def main() -> int:
 
     while not hit and not hung:
 
-        for letter in secret_letters_found:
-            print(letter, end='');
-        else:
-            print('\nPlaying...');
+        update(secret_letters_found);        # Update the screen
 
-        guess = input('Type a letter: ').strip().lower();
+        while (guess := input('Type a letter: ').strip().lower()) in secret_letters_found: pass
         index_guess = secret_word.find(guess);
 
         while index_guess != -1:
@@ -34,7 +39,10 @@ def main() -> int:
 
         if secret_letters_found.count('_') == 0: hit = True;
 
-    print('Game over!');
+    else:
+
+        update(secret_letters_found);        # Update the screen
+        print('Game over!');
         
     return 0;
 
