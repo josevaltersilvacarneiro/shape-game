@@ -1,12 +1,17 @@
 import os
 
+def push_secret_word(word : str) -> None:
+
+    with open('secret-words.txt', 'a') as fil:
+        fil.write(word + '\n');
+
 def get_secret_word() -> str:
 
     return 'banana';
 
 def update(secret_letters_found : list) -> None:
 
-    os.system('clear');                      # It clean the console
+    os.system('clear');                      # It cleans the console
 
     print('******************************');
     print('* Welcome to the Shape Game! *');
@@ -43,6 +48,9 @@ def main() -> int:
 
         update(secret_letters_found);        # Update the screen
         print('Game over!');
+
+        new_secret_word = input('Type a new secret word: ');
+        push_secret_word(new_secret_word);
         
     return 0;
 
