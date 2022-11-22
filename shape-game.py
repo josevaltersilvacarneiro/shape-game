@@ -49,11 +49,11 @@ def main() -> int:
             secret_letters_found[index_guess] = guess;
             index_guess = secret_word.find(guess, index_guess + 1);
 
-        if secret_letters_found.find('_') == -1: hit = True;
+        hit = '_' not in secret_letters_found;
 
     else:
 
-        update(secret_letters_found);        # Update the screen
+        update(secret_word);                 # Update the screen
         print('Game over!');
 
         new_secret_word = input('Type a new secret word: ');
