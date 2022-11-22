@@ -1,5 +1,6 @@
 import os
 from random import choice 
+from termcolor import colored
 
 def push_secret_word(word : str) -> None:
 
@@ -23,6 +24,7 @@ def update(secret_letters_found : list) -> None:
     print('******************************');
 
     for letter in secret_letters_found:
+        letter = colored(letter, 'red');     # It colors the output
         print(letter, end='');
     else:
         print();
