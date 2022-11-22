@@ -15,6 +15,13 @@ def get_secret_word() -> str:
     word = choice(words);
     return word.strip();
 
+def get_the_guess(secret_letters_found : list) -> str:
+
+    while (guess := input('Type a letter: ').strip().lower()) in secret_letters_found:
+        pass
+
+    return guess;
+
 def update(secret_letters_found : list) -> None:
 
     os.system('clear');                      # It cleans the console
@@ -39,11 +46,10 @@ def main() -> int:
 
     while not hit and not hung:
 
-        update(secret_letters_found);        # Update the screen
+        update(secret_letters_found);                # Update the screen
+        guess = get_the_guess(secret_letters_found);
 
-        while (guess := input('Type a letter: ').strip().lower()) in secret_letters_found: pass
         index_guess = secret_word.find(guess);
-
         while index_guess != -1:
 
             secret_letters_found[index_guess] = guess;
@@ -53,7 +59,7 @@ def main() -> int:
 
     else:
 
-        update(secret_word);                 # Update the screen
+        update(secret_word);                         # Update the screen
         print('Game over!');
 
         new_secret_word = input('Type a new secret word: ');
