@@ -1,5 +1,5 @@
 import os
-from random import randint
+from random import choice 
 
 def push_secret_word(word : str) -> None:
 
@@ -9,11 +9,10 @@ def push_secret_word(word : str) -> None:
 def get_secret_word() -> str:
 
     with open('secret-words.txt', 'r') as fil:
-        words = fil.read().split('\n');
+        words = fil.readlines();
 
-    words.pop();                             # It deletes the last element of the list that it's '\n'
-    line = randint(0, len(words) - 1);
-    return words[line];
+    word = choice(words);
+    return word.strip();
 
 def update(secret_letters_found : list) -> None:
 
