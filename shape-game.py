@@ -49,7 +49,7 @@ def main() -> int:
             secret_letters_found[index_guess] = guess;
             index_guess = secret_word.find(guess, index_guess + 1);
 
-        if secret_letters_found.count('_') == 0: hit = True;
+        if secret_letters_found.find('_') == -1: hit = True;
 
     else:
 
